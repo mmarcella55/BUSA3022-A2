@@ -4,7 +4,6 @@ from datetime import datetime, date
 import csv
 from openpyxl import load_workbook
 
-# Find Excel files in the same folder as this script
 BASE = Path(__file__).resolve().parent
 PROCESSED = BASE / "processed"
 LOGS = BASE / "logs"
@@ -18,12 +17,10 @@ issues = []
 def record_issue(source, row, issue):
     issues.append([source, row, issue])
 
-
 def valid_date(value):
     if isinstance(value, (datetime, date)):
         return value.date() if isinstance(value, datetime) else value
     return None
-
 
 def save_csv(path, headers, rows):
     with open(path, "w", newline="", encoding="utf-8") as file:
@@ -69,7 +66,7 @@ rba_rows.sort(key=lambda row: row[0])
 # 2. Read original ASX 200 data
 asx = load_workbook(BASE / "AXS 200.xlsx", read_only=True, data_only=True)
 
-# Find the raw sheet (the original name has a trailing space)
+# Find the raw sheet
 asx_sheet = next(
     sheet for sheet in asx.worksheets
     if sheet.title.strip().lower() == "raw data"
@@ -114,7 +111,7 @@ asx.close()
 asx_rows.sort(key=lambda row: row[0])
 
 
-# 3. Save validated data separately from original files
+# 3. Save cleaned data as CSV files
 save_csv(
     PROCESSED / "rba_clean.csv",
     ["Date", "Cash Rate Target (%)"],
