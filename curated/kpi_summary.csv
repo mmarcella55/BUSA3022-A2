@@ -1,0 +1,13 @@
+Metric,Value,Unit
+Reporting date,2026-10-16,
+ASX 200 close,8806.7,points
+ASX 200 12-month return,-2.89,%
+Maximum drawdown,-9.05,%
+Current 20-day volatility,11.31,% annualised
+Full-period volatility,12.38,% annualised
+Trend signal (MA20 vs MA50),Down,
+Cash rate target,4.6,%
+"Cash rate change, last 12 months",100,bps
+Last rate decision,2026-09-30,
+Days since last rate change,15,days
+Rate decisions in ASX window,4,count
