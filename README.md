@@ -63,3 +63,51 @@ POC result: 255 daily metric rows, 38 rate decisions found since 2011, 4 decisio
 **Limitations**
 
 The POC demonstrates repeatable ingestion from local Excel files, rather than automated downloading from the original providers. Scheduling, automated retries and dashboard integration are proposed components that have not yet been implemented. Missing ASX 200 volume values remain unresolved and should be reviewed before volume-based analysis.
+
+
+**Part 3 – Market Intelligence Dashboard**
+
+The Tableau Public dashboard presents ASX 200 market trends and RBA cash rate movements to support Really Big Bank's market monitoring and reporting.
+
+The dashboard focuses on the latest 90 days of market activity, supported by additional trend and risk indicators.
+
+**Dashboard Components**
+
+| Component | Description |
+|---|---|
+| Market Monitoring Signal | Red, Amber and Green (RAG) indicator comparing the latest ASX 200 closing price with its seven-observation rolling average |
+| Key Performance Indicators | Current 20-day annualised volatility, maximum drawdown and latest RBA cash rate |
+| ASX 200 Market Trend | Closing price and seven-observation rolling average over 90 days |
+| Trading Volume | Daily ASX 200 trading volume over 90 days |
+| Macro Comparison | ASX 200 closing price and RBA cash rate displayed on a shared date axis |
+| Moving Averages | ASX 200 closing price compared with 20-day and 50-day moving averages |
+| Rolling Volatility | 20-day annualised volatility over a 12-month period |
+
+**RAG Signal Thresholds**
+
+- Green: Closing price is equal to or above the rolling average.
+- Amber: Closing price is below the rolling average by up to 2%.
+- Red: Closing price is more than 2% below the rolling average.
+
+The RAG indicator provides a short-term monitoring signal rather than a prediction of future market performance.
+
+**Dashboard Files**
+
+| File or Folder | Description |
+|---|---|
+| `dashboard/Market_Intelligence_Dashboard.twbx` | Packaged Tableau workbook containing the interactive dashboard |
+| `dashboard/Dashboard_1.png` | Dashboard overview, monitoring signal and market trend |
+| `dashboard/Dashboard_2.png` | Trading volume and macro comparison |
+| `dashboard/Dashboard_3.png` | Moving averages and rolling volatility |
+
+**How to View the Dashboard**
+
+1. Download the packaged Tableau workbook from `dashboard/`.
+2. Open the `.twbx` file using Tableau Public Desktop Edition or Tableau Desktop.
+3. Select the `Market Intelligence Board` dashboard tab to view the visualisations.
+
+The dashboard screenshots provide a visual overview without requiring Tableau.
+
+**Limitations**
+
+The missing ASX 200 trading volume value on 16 October 2026 was left blank rather than estimated. The dashboard is a proof of concept using historical data and does not provide automated live updates.
